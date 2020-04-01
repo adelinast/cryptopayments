@@ -1,3 +1,11 @@
+Dockerized Cryptopayments application
+
+Programming Language: C#
+Unit tests: NUnit
+Entity Framework
+SQL Server
+Docker
+
 Build:
 ***************
 
@@ -82,8 +90,3 @@ DB is in Logger.txt
 Unit Tests are in Transaction.Test.cs
 tests_playlist represents the list that can be used in Visual Studio
 
-
-
-Result
-***************
-After my run, I saved the databases filled with transactions in result folder

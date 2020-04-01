@@ -1,0 +1,7 @@
+[{
+	"dbName": "CryptoPayments.TransactionContext",
+	"dbFiles": [
+		"CryptoPayments.mdf",
+		"CryptoPayments_log.ldf"
+	]
+}]

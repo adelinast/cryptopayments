@@ -1,0 +1,49 @@
+version: '3'
+volumes:
+  volume01: {}
+
+services:
+    efsqldocker:
+        image: microsoft/mssql-server-windows-developer
+        container_name: efmysqldocker
+        environment:
+            ACCEPT_EULA: Y
+            MYSQL_USER: root
+            MYSQL_PASSWORD: Password1
+            SA_PASSWORD: Password1
+            attach_dbs: "[{'dbName':'CryptoPayments.TransactionContext','dbFiles':['CryptoPayments.mdf','CryptoPayments_log.ldf']}]"
+        restart: always
+        ports:
+            - "1433:1433"
+        networks:
+            - dockermysql-net
+
+    efcoredockermysql:
+        image: efcoredockermysql
+        restart: always
+        build:
+            context: ./
+            dockerfile: ./db/Dockerfile
+        ports:
+            - "1433:1433"
+        depends_on:
+            - efsqldocker
+        networks:
+            - dockermysql-net
+
+    appcrypto:
+        env_file: ./env.env
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        container_name:
+            appcrypto
+        depends_on:
+            - efsqldocker
+        networks:
+            - dockermysql-net
+        restart: always
+        command: timeout 10
+
+networks:
+  dockermysql-net:

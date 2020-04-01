@@ -1,0 +1,42 @@
+[
+    {
+        "Name": "cryptopaymentsdocker_dockermysql-net",
+        "Id": "04b0787d9d8e76776b734390a7560a857d664e4835d69543c18c49c17a97add7",
+        "Created": "2018-05-24T15:01:27.758808+03:00",
+        "Scope": "local",
+        "Driver": "nat",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "windows",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "0.0.0.0/0"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": true,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "3bca74915b4497a66968acbb5d715c4b60791df62e5b83ea9feb0cb548716de9": {
+                "Name": "cryptopaymentsdocker_mysql_1",
+                "EndpointID": "847e7f74b8b25cccfbc3ee62b792a4c65de8e7781013ef023003144ed9637754",
+                "MacAddress": "00:15:5d:da:8e:e3",
+                "IPv4Address": "172.26.2.233/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.windowsshim.hnsid": "389c0da8-c78e-4c03-b871-4b8fd5f863e5"
+        },
+        "Labels": {
+            "com.docker.compose.network": "dockermysql-net",
+            "com.docker.compose.project": "cryptopaymentsdocker"
+        }
+    }
+]

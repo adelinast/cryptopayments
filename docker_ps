@@ -1,0 +1,2 @@
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS                 PORTS                    NAMES
+5c64f54a9318        microsoft/mssql-server-windows-developer   "powershell -Command…"   5 hours ago         Up 5 hours (healthy)   0.0.0.0:1433->1433/tcp   cryptopaymentsdocker_efsql_1

@@ -1,0 +1,219 @@
+Step 1/13 : FROM microsoft/dotnet-framework:4.7.2-sdk AS build
+ ---> d9c987c9c487
+Step 2/13 : WORKDIR /app
+ ---> Using cache
+ ---> da9f3622a21f
+Step 3/13 : COPY *.csproj ./
+ ---> Using cache
+ ---> a9841d654de4
+Step 4/13 : COPY packages.config ./
+ ---> Using cache
+ ---> 4fb0cde76c9f
+Step 5/13 : COPY *.json ./
+ ---> Using cache
+ ---> 6e87347085eb
+Step 6/13 : COPY . ./
+ ---> 92b0b400eb5e
+Step 7/13 : RUN ls /app
+ ---> Running in e929c0d5162b
+
+
+    Directory: C:\app
+
+
+Mode                LastWriteTime         Length Name                          
+----                -------------         ------ ----                          
+d-----        5/26/2018   4:38 PM                .git                          
+d-----        5/21/2018   8:31 PM                .vs                           
+d-----        5/26/2018   4:40 PM                db                            
+d-----        5/21/2018   8:54 PM                packages                      
+d-----        5/21/2018   8:31 PM                Properties                    
+-a----        5/26/2018   7:03 PM             27 .dockerignore                 
+-a----        5/26/2018   7:35 PM           1327 App.config                    
+-a----        5/26/2018   6:58 PM         162994 Application.cs                
+-a----        5/25/2018   3:28 PM           6883 cryptopayments.csproj         
+-a----        5/24/2018   3:55 PM            626 cryptopayments.csproj.user    
+-a----        5/21/2018   8:49 PM            994 CryptoPayments.sln            
+-a----        5/15/2018   5:21 PM            577 Deposit.cs                    
+-a----        5/26/2018   7:36 PM           1243 docker-compose.yml            
+-a----        5/25/2018   5:56 PM            488 Dockerfile                    
+-a----        5/25/2018   2:53 PM            349 docker_ps                     
+-a----        5/26/2018   7:37 PM              0 docker_run                    
+-a----        5/22/2018   3:46 PM             66 env.env                       
+-a----        5/24/2018   3:43 PM            198 netstat_an_db                 
+-a----        5/24/2018   5:20 PM           1366 network_inpect                
+-a----        5/21/2018   8:54 PM           1076 packages.config               
+-a----        5/26/2018   7:04 PM           1473 ParserJson.cs                 
+-a----        5/24/2018   5:00 PM            703 Program.cs                    
+-a----        5/26/2018   7:27 PM           2289 README.md                     
+-a----        5/14/2018  12:07 PM            522 RootObjJson.cs                
+-a----        5/23/2018   4:25 PM           2920 start.ps1                     
+-a----        5/23/2018   7:59 PM            673 tests.playlist                
+-a----        5/21/2018   9:17 PM           2695 Transaction.cs                
+-a----        5/23/2018   3:15 PM           1499 Transaction.Test.cs           
+-a----        5/26/2018   7:10 PM           3036 TransactionContext.cs         
+-a----        5/22/2018   3:53 PM          80439 transactions-1.json           
+-a----        5/22/2018   4:10 PM          61970 transactions-2.json           
+
+
+Removing intermediate container e929c0d5162b
+ ---> 2bd42ca97ae1
+Step 8/13 : RUN nuget.exe restore cryptopayments.csproj -SolutionDirectory ../ -Verbosity normal
+ ---> Running in 3720dba92b7b
+MSBuild auto-detection: using msbuild version '15.7.177.53362' from 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\bin'.
+Restoring NuGet package EntityFramework.6.2.0.
+Restoring NuGet package NUnit.3.10.1.
+Restoring NuGet package Newtonsoft.Json.11.0.2.
+Restoring NuGet package NUnit.Console.3.8.0.
+Restoring NuGet package NUnit.ConsoleRunner.3.8.0.
+Restoring NuGet package NUnit.Extension.NUnitProjectLoader.3.5.0.
+Restoring NuGet package NUnit.Extension.NUnitV2Driver.3.6.0.
+Restoring NuGet package NUnit.Extension.NUnitV2ResultWriter.3.5.0.
+Restoring NuGet package NUnit.Extension.TeamCityEventListener.1.0.3.
+Restoring NuGet package NUnit.Extension.VSProjectLoader.3.7.0.
+Restoring NuGet package NUnit.Runners.3.8.0.
+Restoring NuGet package NUnit3TestAdapter.3.10.0.
+  GET https://api.nuget.org/v3-flatcontainer/nunit/3.10.1/nunit.3.10.1.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/newtonsoft.json/11.0.2/newtonsoft.json.11.0.2.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/entityframework/6.2.0/entityframework.6.2.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.console/3.8.0/nunit.console.3.8.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.consolerunner/3.8.0/nunit.consolerunner.3.8.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitprojectloader/3.5.0/nunit.extension.nunitprojectloader.3.5.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitv2driver/3.6.0/nunit.extension.nunitv2driver.3.6.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.extension.teamcityeventlistener/1.0.3/nunit.extension.teamcityeventlistener.1.0.3.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitv2resultwriter/3.5.0/nunit.extension.nunitv2resultwriter.3.5.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.extension.vsprojectloader/3.7.0/nunit.extension.vsprojectloader.3.7.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit.runners/3.8.0/nunit.runners.3.8.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nunit3testadapter/3.10.0/nunit3testadapter.3.10.0.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/newtonsoft.json/11.0.2/newtonsoft.json.11.0.2.nupkg 230ms
+Installing Newtonsoft.Json 11.0.2.
+  OK https://api.nuget.org/v3-flatcontainer/nunit.console/3.8.0/nunit.console.3.8.0.nupkg 646ms
+Installing NUnit.Console 3.8.0.
+Adding package 'NUnit.Console.3.8.0' to folder 'C:\packages'
+Added package 'NUnit.Console.3.8.0' to folder 'C:\packages'
+  OK https://api.nuget.org/v3-flatcontainer/nunit.extension.teamcityeventlistener/1.0.3/nunit.extension.teamcityeventlistener.1.0.3.nupkg 802ms
+Installing NUnit.Extension.TeamCityEventListener 1.0.3.
+  OK https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitv2resultwriter/3.5.0/nunit.extension.nunitv2resultwriter.3.5.0.nupkg 805ms
+Installing NUnit.Extension.NUnitV2ResultWriter 3.5.0.
+  OK https://api.nuget.org/v3-flatcontainer/nunit.consolerunner/3.8.0/nunit.consolerunner.3.8.0.nupkg 810ms
+Installing NUnit.ConsoleRunner 3.8.0.
+  OK https://api.nuget.org/v3-flatcontainer/nunit/3.10.1/nunit.3.10.1.nupkg 823ms
+Installing NUnit 3.10.1.
+  OK https://api.nuget.org/v3-flatcontainer/nunit3testadapter/3.10.0/nunit3testadapter.3.10.0.nupkg 821ms
+Installing NUnit3TestAdapter 3.10.0.
+  OK https://api.nuget.org/v3-flatcontainer/nunit.runners/3.8.0/nunit.runners.3.8.0.nupkg 824ms
+Installing NUnit.Runners 3.8.0.
+  OK https://api.nuget.org/v3-flatcontainer/entityframework/6.2.0/entityframework.6.2.0.nupkg 831ms
+Installing EntityFramework 6.2.0.
+Adding package 'NUnit.Extension.NUnitV2ResultWriter.3.5.0' to folder 'C:\packages'
+Adding package 'NUnit.Extension.TeamCityEventListener.1.0.3' to folder 'C:\packages'
+  OK https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitprojectloader/3.5.0/nunit.extension.nunitprojectloader.3.5.0.nupkg 831ms
+Installing NUnit.Extension.NUnitProjectLoader 3.5.0.
+Adding package 'NUnit.Runners.3.8.0' to folder 'C:\packages'
+Added package 'NUnit.Runners.3.8.0' to folder 'C:\packages'
+Adding package 'NUnit.Extension.NUnitProjectLoader.3.5.0' to folder 'C:\packages'
+Added package 'NUnit.Extension.NUnitV2ResultWriter.3.5.0' to folder 'C:\packages'
+Added package 'NUnit.Extension.TeamCityEventListener.1.0.3' to folder 'C:\packages'
+Added package 'NUnit.Extension.NUnitProjectLoader.3.5.0' to folder 'C:\packages'
+  OK https://api.nuget.org/v3-flatcontainer/nunit.extension.vsprojectloader/3.7.0/nunit.extension.vsprojectloader.3.7.0.nupkg 970ms
+Installing NUnit.Extension.VSProjectLoader 3.7.0.
+Adding package 'NUnit.ConsoleRunner.3.8.0' to folder 'C:\packages'
+Adding package 'NUnit.Extension.VSProjectLoader.3.7.0' to folder 'C:\packages'
+Added package 'NUnit.Extension.VSProjectLoader.3.7.0' to folder 'C:\packages'
+Added package 'NUnit.ConsoleRunner.3.8.0' to folder 'C:\packages'
+Adding package 'NUnit3TestAdapter.3.10.0' to folder 'C:\packages'
+Added package 'NUnit3TestAdapter.3.10.0' to folder 'C:\packages'
+Adding package 'Newtonsoft.Json.11.0.2' to folder 'C:\packages'
+Added package 'Newtonsoft.Json.11.0.2' to folder 'C:\packages'
+  OK https://api.nuget.org/v3-flatcontainer/nunit.extension.nunitv2driver/3.6.0/nunit.extension.nunitv2driver.3.6.0.nupkg 3378ms
+Installing NUnit.Extension.NUnitV2Driver 3.6.0.
+Adding package 'NUnit.Extension.NUnitV2Driver.3.6.0' to folder 'C:\packages'
+Added package 'NUnit.Extension.NUnitV2Driver.3.6.0' to folder 'C:\packages'
+Adding package 'NUnit.3.10.1' to folder 'C:\packages'
+Added package 'NUnit.3.10.1' to folder 'C:\packages'
+Adding package 'EntityFramework.6.2.0' to folder 'C:\packages'
+Added package 'EntityFramework.6.2.0' to folder 'C:\packages'
+
+NuGet Config files used:
+    C:\Users\ContainerAdministrator\AppData\Roaming\NuGet\NuGet.Config
+
+Feeds used:
+    https://api.nuget.org/v3/index.json
+
+Installed:
+    12 package(s) to packages.config projects
+Removing intermediate container 3720dba92b7b
+ ---> 1d5b43006ace
+Step 9/13 : RUN MSBuild.exe cryptopayments.csproj /t:build /p:Configuration=Release /p:OutputPath=./out
+ ---> Running in 84b37992ff7e
+Microsoft (R) Build Engine version 15.7.177.53362 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 5/26/2018 7:39:14 PM.
+Project "C:\app\cryptopayments.csproj" on node 1 (build target(s)).
+PrepareForBuild:
+  Creating directory "./out\".
+  Creating directory "obj\Release\".
+GenerateBindingRedirects:
+  No suggested binding redirects from ResolveAssemblyReferences.
+CoreCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\Roslyn\csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:anycpu32bitpreferred /errorreport:prompt /warn:4 /define:TRACE /highentropyva+ /reference:C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll /reference:C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll" /reference:C:\app\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll /reference:C:\app\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ComponentModel.DataAnnotations.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Configuration.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.Linq.dll" /debug:pdbonly /filealign:512 /optimize+ /out:obj\Release\CryptoPayments.exe /subsystemversion:6.00 /target:exe /utf8output Application.cs Deposit.cs ParserJson.cs Program.cs Properties\AssemblyInfo.cs RootObjJson.cs Transaction.cs Transaction.Test.cs TransactionContext.cs "C:\Users\ContainerAdministrator\AppData\Local\Temp\.NETFramework,Version=v4.5.2.AssemblyAttributes.cs"
+  Using shared compilation with compiler from directory: C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\Roslyn
+_CopyFilesMarkedCopyLocal:
+  Copying file from "C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" to "./out\EntityFramework.dll".
+  Copying file from "C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" to "./out\EntityFramework.SqlServer.dll".
+  Copying file from "C:\app\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll" to "./out\Newtonsoft.Json.dll".
+  Copying file from "C:\app\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll" to "./out\nunit.framework.dll".
+  Copying file from "C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.xml" to "./out\EntityFramework.xml".
+  Copying file from "C:\app\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.xml" to "./out\EntityFramework.SqlServer.xml".
+  Copying file from "C:\app\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.xml" to "./out\Newtonsoft.Json.xml".
+  Copying file from "C:\app\packages\NUnit.3.10.1\lib\net45\nunit.framework.pdb" to "./out\nunit.framework.pdb".
+  Copying file from "C:\app\packages\NUnit.3.10.1\lib\net45\nunit.framework.xml" to "./out\nunit.framework.xml".
+  Creating "C:\app\obj\Release\cryptopayments.csproj.CopyComplete" because "AlwaysCreate" was specified.
+_CopyOutOfDateSourceItemsToOutputDirectory:
+  Copying file from "C:\app\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3.TestAdapter.dll" to "./out\NUnit3.TestAdapter.dll".
+  Copying file from "C:\app\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3.TestAdapter.pdb" to "./out\NUnit3.TestAdapter.pdb".
+  Copying file from "C:\app\packages\NUnit3TestAdapter.3.10.0\build\net35\nunit.engine.dll" to "./out\nunit.engine.dll".
+  Copying file from "C:\app\packages\NUnit3TestAdapter.3.10.0\build\net35\nunit.engine.api.dll" to "./out\nunit.engine.api.dll".
+  Copying file from "C:\app\packages\NUnit3TestAdapter.3.10.0\build\net35\Mono.Cecil.dll" to "./out\Mono.Cecil.dll".
+_CopyAppConfigFile:
+  Copying file from "App.config" to "./out\CryptoPayments.exe.config".
+CopyFilesToOutputDirectory:
+  Copying file from "obj\Release\CryptoPayments.exe" to "./out\CryptoPayments.exe".
+  cryptopayments -> C:\app\out\CryptoPayments.exe
+  Copying file from "obj\Release\CryptoPayments.pdb" to "./out\CryptoPayments.pdb".
+Done Building Project "C:\app\cryptopayments.csproj" (build target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.76
+Removing intermediate container 84b37992ff7e
+ ---> fed7ecfbdcc4
+Step 10/13 : FROM microsoft/dotnet-framework:4.7.1
+ ---> 70dfaa260c1b
+Step 11/13 : WORKDIR /app
+ ---> Using cache
+ ---> c996b5a4f1f9
+Step 12/13 : COPY --from=build app/out .
+ ---> 75a2972b7336
+Step 13/13 : ENTRYPOINT ["CryptoPayments.exe", "."]
+ ---> Running in ea5b595ed099
+Removing intermediate container ea5b595ed099
+ ---> f0e5cebe6020
+Successfully built f0e5cebe6020
+Successfully tagged cryptopaymentsdocker_appcrypto:latest
+Attaching to appcrypto
+[36mappcrypto            |[0m Deposited for Wesley Crusher: count = 35 sum = 217
+[36mappcrypto            |[0m Deposited for Leonard McCoy: count = 15 sum = 64
+[36mappcrypto            |[0m Deposited for Jonathan Archer: count = 28 sum = 154.2
+[36mappcrypto            |[0m Deposited for Jadzia Dax: count = 12 sum = 59.49
+[36mappcrypto            |[0m Deposited for Montgomery Scott: count = 24 sum = 108.04593
+[36mappcrypto            |[0m Deposited for James T.Kirk: count = 28 sum = 1267.00848015
+[36mappcrypto            |[0m Deposited for Spock: count = 18 sum = 855.5549239
+[36mappcrypto            |[0m Deposited without reference: count = 49 sum = -242.74486743
+[36mappcrypto            |[0m Smallest valid deposit: -98.50871449
+[36mappcrypto            |[0m Largest valid deposit: 1182.15786601
+[36mappcrypto exited with code 0
+[0m

@@ -7,7 +7,6 @@ SQL Server
 Docker
 
 Build
-
 ***************
 
 	docker build -t cryptopayments .
@@ -17,13 +16,13 @@ It takes some time to pull from microsoft/dotnet-framework and from microsoft/ms
 Path to the transactions files can be changed from ENTRYPOINT, found in Dockerfile
 If the files are not found, the strings are read from Application.cs
 
-Run:
+Run
 ***************
 
 	docker run cryptopayments
 
 
-Compose:
+Compose
 ***************
 
 	docker-compose up

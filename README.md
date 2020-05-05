@@ -1,10 +1,10 @@
-Dockerized Cryptopayments application
+**Dockerized Cryptopayments application**
 
-Programming Language: C#
-Unit tests: NUnit
-Entity Framework
-SQL Server
-Docker
+	Programming Language: C#
+	Unit tests: NUnit
+	Entity Framework
+	SQL Server
+	Docker
 
 **Build**
 
@@ -37,7 +37,7 @@ For building separately db
 
 	cd db; docker build -t db .;
 
-**Running outside the container **
+**Running outside the container**
 
 using the SQL server started above:
 
